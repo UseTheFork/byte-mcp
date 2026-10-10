@@ -1,4 +1,5 @@
+packages:
+  - server
 allowBuilds:
   esbuild: true
   tldjs: true
-  vite-plugin-node-externals: true

@@ -1,0 +1,43 @@
+{
+  "name": "byte-mcp",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "bin": {
+    "byte": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc && tsc-alias && chmod 755 dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "fastmcp": "^4.22.4",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.4",
+    "concurrently": "^10.0.6",
+    "cross-env": "^10.1.0",
+    "tsc-alias": "^1.9.7",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.11.1",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.11.1"
+}

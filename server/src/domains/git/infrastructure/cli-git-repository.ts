@@ -41,4 +41,12 @@ export class CliGitRepository implements GitRepository {
           : { hash: line.slice(0, space), message: line.slice(space + 1) };
       });
   }
+
+  async diff(repoPath: string, { staged }: { staged: boolean }): Promise<string> {
+    const result = await run("git", ["diff", ...(staged ? ["--cached"] : [])], repoPath);
+    if (result.exitCode !== 0) {
+      throw new GitCommandError(result.stderr.trim() || "git diff failed");
+    }
+    return result.stdout;
+  }
 }
