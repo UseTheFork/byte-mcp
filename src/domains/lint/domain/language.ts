@@ -1,0 +1,46 @@
+const EXTENSION_LANGUAGES: Record<string, string> = {
+  py: "python",
+  pyi: "python",
+  js: "javascript",
+  jsx: "javascript",
+  mjs: "javascript",
+  cjs: "javascript",
+  ts: "typescript",
+  tsx: "typescript",
+  mts: "typescript",
+  cts: "typescript",
+  php: "php",
+  go: "go",
+  rs: "rust",
+  rb: "ruby",
+  java: "java",
+  kt: "kotlin",
+  swift: "swift",
+  c: "c",
+  h: "c",
+  cc: "cpp",
+  cpp: "cpp",
+  hpp: "cpp",
+  cs: "csharp",
+  sh: "shell",
+  bash: "shell",
+  json: "json",
+  yaml: "yaml",
+  yml: "yaml",
+  toml: "toml",
+  md: "markdown",
+  css: "css",
+  scss: "scss",
+  html: "html",
+  vue: "vue",
+  svelte: "svelte",
+  sql: "sql",
+  lua: "lua",
+  dart: "dart",
+};
+
+export function languageOf(file: string): string | undefined {
+  const dot = file.lastIndexOf(".");
+  if (dot === -1) return undefined;
+  return EXTENSION_LANGUAGES[file.slice(dot + 1).toLowerCase()];
+}
