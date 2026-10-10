@@ -1,9 +1,9 @@
 {
   "mcpServers": {
-    "plugin-api": {
+    "byte-mcp": {
       "type": "stdio",
       "command": "node",
-      "args": ["${PLUGIN_ROOT}/server/dist/index.js"]
+      "args": ["./server/dist/index.js"]
     }
   }
 }
