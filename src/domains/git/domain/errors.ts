@@ -13,3 +13,9 @@ export class NothingStagedError extends DomainError {
 }
 
 export class GitCommandError extends DomainError {}
+
+export class CommitDeclinedError extends DomainError {
+  constructor() {
+    super("The commit was not confirmed by the user");
+  }
+}

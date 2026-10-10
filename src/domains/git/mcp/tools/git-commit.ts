@@ -60,14 +60,10 @@ export function registerGitCommitTool(
     name: "git_commit",
     description: "Commit the currently staged changes in the workspace git repository",
     parameters: inputSchema,
-    execute: async ({
-      type,
-      commit_message,
-      scope,
-      breaking_change,
-      breaking_change_message,
-      body,
-    }) => {
+    execute: async (
+      { type, commit_message, scope, breaking_change, breaking_change_message, body },
+      { elicit },
+    ) => {
       try {
         const commit = await commitChanges.execute({
           repoPath: getConfig().workspaceDir,
@@ -78,6 +74,17 @@ export function registerGitCommitTool(
             breakingChange: breaking_change,
             breakingChangeMessage: breaking_change_message,
             body,
+          },
+          confirm: async (text) => {
+            const response = await elicit({
+              message: `Commit with this message?\n\n${text}`,
+              requestedSchema: {
+                type: "object",
+                properties: { confirmed: { type: "boolean", title: "Confirm commit" } },
+                required: ["confirmed"],
+              },
+            });
+            return response.action === "accept" && response.content?.confirmed === true;
           },
         });
         return {
