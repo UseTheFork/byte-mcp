@@ -23,6 +23,6 @@ export class CliGitRepository implements GitRepository {
     if (head.exitCode !== 0) {
       throw new GitCommandError(head.stderr.trim() || "git rev-parse failed");
     }
-    return { hash: head.stdout.trim(), message: message.value };
+    return { hash: head.stdout.trim(), message: message.header };
   }
 }

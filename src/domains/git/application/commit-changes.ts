@@ -1,10 +1,10 @@
-import { CommitMessage, type Commit } from "../domain/commit.js";
+import { CommitMessage, type Commit, type CommitMessageParts } from "../domain/commit.js";
 import { NothingStagedError } from "../domain/errors.js";
 import type { GitRepository } from "./ports.js";
 
 export interface CommitChangesInput {
   repoPath: string;
-  message: string;
+  message: CommitMessageParts;
 }
 
 export class CommitChanges {
