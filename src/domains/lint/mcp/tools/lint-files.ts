@@ -1,23 +1,21 @@
-import type { McpServer } from "@modelcontextprotocol/server";
+import type { FastMCP } from "fastmcp";
 import { z } from "zod";
 import { getConfig } from "@/shared/config.js";
 import { DomainError } from "@/shared/errors.js";
 import type { LintFiles } from "@/domains/lint/application/lint-files.js";
 
-export function registerLintFilesTool(server: McpServer, lintFiles: LintFiles) {
-  server.registerTool(
-    "lint_files",
-    {
-      description:
-        "Run the configured lint commands on files in the workspace. Each file is passed to the commands that handle its language.",
-      inputSchema: z.object({
-        files: z
-          .array(z.string().min(1))
-          .min(1)
-          .describe("File paths to lint, relative to the workspace directory"),
-      }),
-    },
-    async ({ files }) => {
+export function registerLintFilesTool(server: FastMCP, lintFiles: LintFiles) {
+  server.addTool({
+    name: "lint_files",
+    description:
+      "Run the configured lint commands on files in the workspace. Each file is passed to the commands that handle its language.",
+    parameters: z.object({
+      files: z
+        .array(z.string().min(1))
+        .min(1)
+        .describe("File paths to lint, relative to the workspace directory"),
+    }),
+    execute: async ({ files }) => {
       try {
         const { runs, unmatched } = await lintFiles.execute({
           workspaceDir: getConfig().workspaceDir,
@@ -39,5 +37,5 @@ export function registerLintFilesTool(server: McpServer, lintFiles: LintFiles) {
         throw error;
       }
     },
-  );
+  });
 }

@@ -1,4 +1,4 @@
-import type { McpServer } from "@modelcontextprotocol/server";
+import type { FastMCP } from "fastmcp";
 import { z } from "zod";
 import { getConfig } from "@/shared/config.js";
 import { DomainError } from "@/shared/errors.js";
@@ -7,7 +7,7 @@ import { COMMIT_TYPES } from "@/domains/git/domain/commit.js";
 import type { GitConfig } from "@/domains/git/config.js";
 
 export function registerGitCommitTool(
-  server: McpServer,
+  server: FastMCP,
   commitChanges: CommitChanges,
   config: GitConfig,
 ) {
@@ -56,13 +56,18 @@ export function registerGitCommitTool(
   // Disabled fields are omitted at runtime; the type stays full so handler fields are typed.
   const inputSchema = fullSchema.omit(disabled as never) as unknown as typeof fullSchema;
 
-  server.registerTool(
-    "git_commit",
-    {
-      description: "Commit the currently staged changes in the workspace git repository",
-      inputSchema,
-    },
-    async ({ type, commit_message, scope, breaking_change, breaking_change_message, body }) => {
+  server.addTool({
+    name: "git_commit",
+    description: "Commit the currently staged changes in the workspace git repository",
+    parameters: inputSchema,
+    execute: async ({
+      type,
+      commit_message,
+      scope,
+      breaking_change,
+      breaking_change_message,
+      body,
+    }) => {
       try {
         const commit = await commitChanges.execute({
           repoPath: getConfig().workspaceDir,
@@ -85,5 +90,5 @@ export function registerGitCommitTool(
         throw error;
       }
     },
-  );
+  });
 }

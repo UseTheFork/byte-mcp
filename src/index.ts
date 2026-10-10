@@ -1,12 +1,12 @@
-import { StdioServerTransport } from "@modelcontextprotocol/server/stdio";
 import { initConfig } from "@/shared/config.js";
 import { createServer } from "./server.js";
 
 async function run() {
-  const config = initConfig();
+  initConfig();
   const server = createServer();
-  await server.connect(new StdioServerTransport());
-  console.error(`Byte MCP Server running on stdio (workspace: ${config.workspaceDir})`);
+  server.start({
+    transportType: "stdio",
+  });
 }
 
 run().catch((error) => {

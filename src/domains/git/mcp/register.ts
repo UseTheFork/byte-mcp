@@ -1,4 +1,4 @@
-import type { McpServer } from "@modelcontextprotocol/server";
+import type { FastMCP } from "fastmcp";
 import { CommitChanges } from "../application/commit-changes.js";
 import type { GitRepository } from "../application/ports.js";
 import { getGitConfig } from "../config.js";
