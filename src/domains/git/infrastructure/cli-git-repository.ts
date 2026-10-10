@@ -25,4 +25,20 @@ export class CliGitRepository implements GitRepository {
     }
     return { hash: head.stdout.trim(), message: message.header };
   }
+
+  async recentCommits(repoPath: string, limit: number): Promise<Commit[]> {
+    const result = await run("git", ["log", "--oneline", `-${limit}`], repoPath);
+    if (result.exitCode !== 0) {
+      throw new GitCommandError(result.stderr.trim() || "git log failed");
+    }
+    return result.stdout
+      .split("\n")
+      .filter(Boolean)
+      .map((line) => {
+        const space = line.indexOf(" ");
+        return space === -1
+          ? { hash: line, message: "" }
+          : { hash: line.slice(0, space), message: line.slice(space + 1) };
+      });
+  }
 }
