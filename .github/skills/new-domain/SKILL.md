@@ -1,6 +1,6 @@
 ---
 name: new-domain
-description: 'Create and structure a new domain in byte-mcp (DDD layout under src/domains). Use when adding a new domain, a new MCP tool, a port/adapter, per-domain config, or asking where code belongs (domain, application, infrastructure, mcp).'
+description: "Create and structure a new domain in byte-mcp (DDD layout under src/domains). Use when adding a new domain, a new MCP tool, a port/adapter, per-domain config, or asking where code belongs (domain, application, infrastructure, mcp)."
 argument-hint: 'Domain name and first tool, e.g. "github, create_issue"'
 ---
 

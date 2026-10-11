@@ -1,3 +1,17 @@
 {
-  "hooks": {}
+  "hooks": {
+    "SessionStart": [],
+    "UserPromptSubmit": [],
+    "PreToolUse": [
+      {
+        "type": "command",
+        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/command-guard.cjs"
+      }
+    ],
+    "PostToolUse": [],
+    "PreCompact": [],
+    "SubagentStart": [],
+    "SubagentStop": [],
+    "Stop": []
+  }
 }

@@ -2,8 +2,7 @@
 name: commit
 description: "Use when preparing or creating a Git commit"
 agents: [conventional-commit, code-specialist]
-tools:
-  [agent, 'byte-mcp/lint_files']
+tools: [agent, "byte-mcp/lint_files"]
 user-invocable: true
 argument-hint: "Describe the changes to commit or ask for a Conventional Commit message"
 ---
