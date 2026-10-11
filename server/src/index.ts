@@ -1,4 +1,5 @@
 import { initConfig } from "@/shared/config.js";
+
 import { createServer } from "./server.js";
 
 async function run() {

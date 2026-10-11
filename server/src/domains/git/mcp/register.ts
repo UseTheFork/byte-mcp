@@ -1,4 +1,5 @@
 import type { FastMCP } from "fastmcp";
+
 import { CommitChanges } from "../application/commit-changes.js";
 import { ListRecentCommits } from "../application/list-recent-commits.js";
 import type { GitRepository } from "../application/ports.js";

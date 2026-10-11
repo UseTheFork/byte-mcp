@@ -1,7 +1,8 @@
 import type { FastMCP } from "fastmcp";
+
+import type { ListRecentCommits } from "@/domains/git/application/list-recent-commits.js";
 import { getConfig } from "@/shared/config.js";
 import { DomainError } from "@/shared/errors.js";
-import type { ListRecentCommits } from "@/domains/git/application/list-recent-commits.js";
 
 export function registerGitRecentCommitsTool(
   server: FastMCP,

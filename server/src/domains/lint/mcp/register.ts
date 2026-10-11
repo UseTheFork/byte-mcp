@@ -1,4 +1,5 @@
 import type { FastMCP } from "fastmcp";
+
 import { LintFiles } from "../application/lint-files.js";
 import type { CommandRunner } from "../application/ports.js";
 import { getLintConfig } from "../config.js";

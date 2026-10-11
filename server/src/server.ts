@@ -1,4 +1,5 @@
 import { FastMCP } from "fastmcp";
+
 import { CliGitRepository, registerGitTools } from "./domains/git/index.js";
 import { ProcessCommandRunner, registerLintTools } from "./domains/lint/index.js";
 

@@ -1,4 +1,5 @@
 import { z } from "zod";
+
 import { getDomainConfig } from "@/shared/config.js";
 
 export const gitConfigSchema = z.object({

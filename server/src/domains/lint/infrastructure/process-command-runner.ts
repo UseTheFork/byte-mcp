@@ -1,4 +1,5 @@
 import { run } from "@/shared/exec.js";
+
 import type { CommandOutput, CommandRunner } from "../application/ports.js";
 import { LintCommandError } from "../domain/errors.js";
 

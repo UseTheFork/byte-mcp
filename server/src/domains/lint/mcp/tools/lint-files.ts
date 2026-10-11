@@ -1,8 +1,9 @@
 import type { FastMCP } from "fastmcp";
 import { z } from "zod";
+
+import type { LintFiles } from "@/domains/lint/application/lint-files.js";
 import { getConfig } from "@/shared/config.js";
 import { DomainError } from "@/shared/errors.js";
-import type { LintFiles } from "@/domains/lint/application/lint-files.js";
 
 export function registerLintFilesTool(server: FastMCP, lintFiles: LintFiles) {
   server.addTool({

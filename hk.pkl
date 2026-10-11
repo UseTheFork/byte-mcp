@@ -1,0 +1,55 @@
+amends "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Config.pkl"
+
+import "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Builtins.pkl"
+
+local linters = new {
+  ["ox_lint"] = (Builtins.ox_lint) {
+    check = "pnpm oxlint --deny-warnings {{ files }}"
+    fix = "pnpm oxlint --deny-warnings --fix {{ files }}"
+  }
+}
+
+local formatter = new {
+  ["newlines"] = Builtins.newlines
+  ["fix-smart-quotes"] = Builtins.fix_smart_quotes
+  ["oxfmt"] = (Builtins.oxfmt) {
+    check = "pnpm oxfmt --check {{ files }}"
+    fix = "pnpm oxfmt --write {{ files }}"
+    exclude = List("**/pnpm-lock.yaml", "**/npins/sources.json")
+  }
+  ["alejandra"] = (Builtins.alejandra) {
+    exclude = List("**/npins/default.nix")
+  }
+  ["pkl-format"] = Builtins.pkl_format
+  ["shfmt"] = Builtins.shfmt
+  ["just-format"] = Builtins.just_format
+  ["keep-sorted"] = new Step {
+    glob = List("*.*")
+    check = "keep-sorted --mode lint {{ files }}"
+    fix = "keep-sorted {{ files }}"
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps {
+      ...linters
+      ...formatter
+    }
+  }
+  ["fix"] {
+    fix = true
+    steps {
+      ...linters
+      ...formatter
+    }
+  }
+  ["check"] {
+    steps {
+      ...linters
+      ...formatter
+    }
+  }
+}

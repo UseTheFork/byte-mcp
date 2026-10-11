@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+
 import { z } from "zod";
 
 export interface AppConfig {

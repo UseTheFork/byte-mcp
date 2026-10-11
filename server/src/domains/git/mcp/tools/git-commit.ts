@@ -1,10 +1,11 @@
 import type { FastMCP } from "fastmcp";
 import { z } from "zod";
+
+import type { CommitChanges } from "@/domains/git/application/commit-changes.js";
+import type { GitConfig } from "@/domains/git/config.js";
+import { COMMIT_TYPES } from "@/domains/git/domain/commit.js";
 import { getConfig } from "@/shared/config.js";
 import { DomainError } from "@/shared/errors.js";
-import type { CommitChanges } from "@/domains/git/application/commit-changes.js";
-import { COMMIT_TYPES } from "@/domains/git/domain/commit.js";
-import type { GitConfig } from "@/domains/git/config.js";
 
 export function registerGitCommitTool(
   server: FastMCP,

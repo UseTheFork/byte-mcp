@@ -1,9 +1,10 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
     "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
   },
   "devDependencies": {
     "oxfmt": "^0.72.0",

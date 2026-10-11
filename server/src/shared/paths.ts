@@ -1,4 +1,5 @@
 import { isAbsolute, relative, resolve } from "node:path";
+
 import { DomainError } from "@/shared/errors.js";
 
 export class PathOutsideWorkspaceError extends DomainError {
