@@ -17,7 +17,6 @@ export const lintCommandSchema = z.object({
 });
 
 export const lintConfigSchema = z.object({
-  enable: z.boolean().default(false).describe("Enable or disable the linting functionality"),
   commands: z
     .array(lintCommandSchema)
     .default([])

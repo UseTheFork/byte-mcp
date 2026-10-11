@@ -8,6 +8,5 @@ import { registerLintFilesTool } from "./tools/lint-files.js";
 export function registerLintTools(server: FastMCP, runner: CommandRunner) {
   // Loaded here so an invalid config fails at startup.
   const config = getLintConfig();
-  if (!config.enable) return;
   registerLintFilesTool(server, new LintFiles(runner, config.commands));
 }

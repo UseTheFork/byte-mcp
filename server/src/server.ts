@@ -4,7 +4,7 @@ import { CliGitRepository, registerGitTools } from "./domains/git/index.js";
 import { ProcessCommandRunner, registerLintTools } from "./domains/lint/index.js";
 
 export function createServer(): FastMCP {
-  const server = new FastMCP({ name: "byte-mcp-server", version: "1.0.0" });
+  const server = new FastMCP({ name: "byte-mcp-server", version: "0.0.1" });
 
   registerGitTools(server, new CliGitRepository());
   registerLintTools(server, new ProcessCommandRunner());

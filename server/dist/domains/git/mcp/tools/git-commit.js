@@ -1,7 +1,7 @@
 import { z } from "zod";
+import { COMMIT_TYPES } from "../../domain/commit.js";
 import { getConfig } from "../../../../shared/config.js";
 import { DomainError } from "../../../../shared/errors.js";
-import { COMMIT_TYPES } from "../../domain/commit.js";
 export function registerGitCommitTool(server, commitChanges, config) {
     const descriptionDoc = [
         "The description part of the commit message only, without the type prefix. Short, imperative, present tense.",

@@ -10,7 +10,6 @@ export const lintCommandSchema = z.object({
         .describe("List of language names this command handles (e.g., ['python', 'php']). Empty list means all files."),
 });
 export const lintConfigSchema = z.object({
-    enable: z.boolean().default(false).describe("Enable or disable the linting functionality"),
     commands: z
         .array(lintCommandSchema)
         .default([])

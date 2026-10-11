@@ -1,0 +1,13 @@
+{
+  "git": {
+    "enable_scopes": false,
+    "enable_breaking_changes": false,
+    "enable_body": false,
+    "scopes": ["api", "auth", "cli", "config", "core", "db", "deps", "docs", "test", "ui"],
+    "description_guidelines": [],
+    "max_description_length": 72
+  },
+  "lint": {
+    "commands": []
+  }
+}
