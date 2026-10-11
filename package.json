@@ -1,9 +1,14 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "oxfmt": "^0.72.0",
+    "oxlint": "^1.87.0"
+  },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
